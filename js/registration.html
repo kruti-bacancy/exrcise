@@ -1,0 +1,98 @@
+<html>
+
+<head>
+<title>register</title>
+<script src="registration.js">
+
+</script>
+</head>
+
+<body>
+<p id="demo"></p>
+<form name="register" method="post">
+
+<center>
+      REGISTRATION FORM</br><br><br>
+
+<table border="1">
+<tr>
+<td>Name:</td>
+<td><input type="text" id="name" name="name" required/>
+<span type="focus" style="color:red" id="validname"/>
+</tr>
+
+<tr>
+<td>Course:</td>
+<td>
+<select name="course">
+<option value="B.E">B.E</option>
+<option value="M.E">M.E</option>
+<option value="BSC IT">BSC IT</option>
+<option value="MSC IT">MSC IT</option>
+</select>
+</td>
+</tr>
+
+<tr>
+<td>Address:</td>
+<td><input type="text" name="address" required/>
+<span type="focus" style="color:red" id="validadd"/>
+</tr>
+
+<tr>
+<td>Email:</td>
+<td><input type="text" name="email" required/>
+<span type="focus" style="color:red" id="validemail"/>
+</tr>
+
+<tr>
+<td>Bith Date:</td>
+<td><input type="Date" name="birthdate" />
+</tr>
+
+
+<tr>
+<td>Gender:</td>
+<td><div>
+<input type="radio" id="male" name="gender" value="male" /><span>Male</span>
+	<input type="radio" id="female" name="gender" value="female"/><span>Female</span>
+	<span type="focus" style="color:red" id="validgender"/>
+	</div></td>
+	
+</tr>
+
+<tr>
+<div id="Language">
+<td>Language:</td>
+<td><input type="checkbox" class="lang" name="langa[]" value="english"/><span>English</span>
+<input type="checkbox" class="lang" name="langa[]" value="gujrati"/><span>Gujrati</span>
+<input type="checkbox" class="lang" name="langa[]" value="hindi"/><span>Hindi</span>
+
+<span type="focus" style="color:red" id="validlangauge"/>
+</td>
+</div>
+</tr>
+
+<tr>
+<td>Contact No:</td>
+<td><input type="text" name="contactno" required />
+<span type="focus" style="color:red" id="validcontact"/>
+</tr>
+
+<tr>
+<td>TextArea:</td>
+<td><textarea type="text" name="teaxtarea" value="teaxtarea"></textarea></td>
+</tr>
+
+<tr>
+
+<td><input type="button" onclick="valid();" name="Submit" value="Submit"/></td>
+<td><input type="reset" name="Reset" /></td>
+</tr>
+
+</table>
+</center>
+</form>
+</body>
+
+</html>
