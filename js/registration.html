@@ -2,14 +2,12 @@
 
 <head>
 <title>register</title>
-<script src="registration.js">
 
-</script>
 </head>
 
 <body>
 <p id="demo"></p>
-<form name="register" method="post">
+<form name="register" method="post" onsubmit="return valid();" >
 
 <center>
       REGISTRATION FORM</br><br><br>
@@ -17,8 +15,9 @@
 <table border="1">
 <tr>
 <td>Name:</td>
-<td><input type="text" id="name" name="name" required/>
-<span type="focus" style="color:red" id="validname"/>
+<td><input type="text" id="name" name="name" value="" onChange="printerrormsg(this.value)"  required>
+<span style="color:red"  id="error"></span>
+
 </tr>
 
 <tr>
@@ -35,14 +34,15 @@
 
 <tr>
 <td>Address:</td>
-<td><input type="text" name="address" required/>
-<span type="focus" style="color:red" id="validadd"/>
+<td><input type="text" id="address" name="address" value="" onChange="validaddres(this.value)"required/>
+<span style="color:red" id="addmsg"></span>
+
 </tr>
 
 <tr>
 <td>Email:</td>
-<td><input type="text" name="email" required/>
-<span type="focus" style="color:red" id="validemail"/>
+<td><input type="text" name="email" onChange="ValidateEmail(this.value)"required/>
+<span style="color:red" id="emailmsg"></span>
 </tr>
 
 <tr>
@@ -53,30 +53,30 @@
 
 <tr>
 <td>Gender:</td>
-<td><div>
+<td><div onchange="validgender(this.id,this.id)">
 <input type="radio" id="male" name="gender" value="male" /><span>Male</span>
 	<input type="radio" id="female" name="gender" value="female"/><span>Female</span>
-	<span type="focus" style="color:red" id="validgender"/>
+	<span type="focus" style="color:red" id="gendermsg"/>
 	</div></td>
 	
 </tr>
 
 <tr>
-<div id="Language">
+<div id="Language" onchange="validcheckbox(this.class)">
 <td>Language:</td>
 <td><input type="checkbox" class="lang" name="langa[]" value="english"/><span>English</span>
 <input type="checkbox" class="lang" name="langa[]" value="gujrati"/><span>Gujrati</span>
 <input type="checkbox" class="lang" name="langa[]" value="hindi"/><span>Hindi</span>
 
-<span type="focus" style="color:red" id="validlangauge"/>
+<span type="focus" style="color:red" id="checkboxmsg"/>
 </td>
 </div>
 </tr>
 
 <tr>
 <td>Contact No:</td>
-<td><input type="text" name="contactno" required />
-<span type="focus" style="color:red" id="validcontact"/>
+<td><input type="text" name="contactno" onChange="validcontactno(this.value)" required />
+<span type="focus" style="color:red" id="contactmsg"/>
 </tr>
 
 <tr>
@@ -86,12 +86,238 @@
 
 <tr>
 
-<td><input type="button" onclick="valid();" name="Submit" value="Submit"/></td>
+<td><input type="submit" name="Submit" value="Submit"/></td>
 <td><input type="reset" name="Reset" /></td>
 </tr>
 
 </table>
 </center>
+
+
+<script>
+var result;
+var check="";
+var name=document.forms["register"]["name"].value;
+var cour=document.forms["register"]["course"].value;
+var address=document.forms["register"]["address"].value;
+var email=document.forms["register"]["email"].value;
+var birthdate=document.forms["register"]["birthdate"].value;
+var male=document.getElementById("male");
+var female=document.getElementById("female");
+var language=document.getElementsByClassName("lang");
+var contactno=document.forms["register"]["contactno"].value;
+var textar=document.forms["register"]["teaxtarea"].value;
+
+if(printerrormsg(name))
+{			
+}
+
+if(validaddres(address))
+{
+}
+	
+if(ValidateEmail(email))  
+{ 
+}	
+
+if(validgender(male,female))
+{
+}
+
+if(validcontactno(contactno))
+{
+}
+
+if(validcheckbox(language))
+{	
+}
+
+	
+function printerrormsg(name)
+		{
+			//console.log("val",name=="",name);
+			if(name=="")
+			{
+				document.getElementById('error').innerHTML="Fill Name";
+				
+				return false;
+			}
+			else
+			{
+				document.getElementById('error').innerHTML="";
+				return true;
+			}
+			
+		}
+function validaddres(address)
+		{
+			console.log("address",address=="",address);
+			if(address=="")
+			{
+				document.getElementById('addmsg').innerHTML="please fill address";
+				return false;
+			}
+			else
+			{
+				document.getElementById('addmsg').innerHTML="";
+				return true;
+			}
+			
+		}
+function ValidateEmail(email)  
+        {  
+			var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  
+			
+			if(email=="")
+			{
+				document.getElementById('emailmsg').innerHTML="please enter email";
+			}
+			else
+			{
+				document.getElementById('emailmsg').innerHTML="";
+			}
+			if(email.match(mailformat))  
+			{  
+				document.getElementById('emailmsg').innerHTML="";
+				return true;
+			}
+			else
+			{
+				document.getElementById('emailmsg').innerHTML="Enter Valid Email";
+			}
+									
+        }
+		function validcontactno(contactno)  
+		{   
+			var numbers = /^[0-9]+$/;  
+			if(contactno.match(numbers))  
+			{  
+				if((contactno.length>10)||(contactno.length<8))
+				{
+					document.getElementById('contactmsg').innerHTML="contactno have max=10 and min=8 numbers";
+					return false;
+				}
+				else
+				{
+					document.getElementById('contactmsg').innerHTML="";
+					return true;  
+				}
+				
+			}  
+			else if(contactno!=numbers)
+			{  
+				document.getElementById('contactmsg').innerHTML="enter numeric characters";  
+				return false;  
+			}
+            else	
+			{
+				document.getElementById('contactmsg').innerHTML="";
+			}			
+        }  		
+		function validgender(male,female)  
+        {   
+			if(male.checked)   
+			{  
+				female.checked==false;
+				result=document.getElementById("male").value;
+				document.getElementById('gendermsg').innerHTML="";
+				return result;
+			}
+			else if(female.checked)  
+			{  	
+				male.checked==false;
+				result=document.getElementById("female").value;
+				document.getElementById('gendermsg').innerHTML="";
+				return result;
+			}  
+			else 
+			{  
+			//document.getElementById('gendermsg').innerHTML="please select gender";  
+			//return false;
+			}
+			
+			return true;	    
+        } 
+		function validcheckbox(language)
+		{
+			//console.log("language>>>>", language);
+			if(language.length==null)
+			{
+				document.getElementById('checkboxmsg').innerHTML="Please select language";
+			}
+			else
+			{
+				for(var i=0;i<language.length;i++)
+				{
+					if(language[i].checked==true)
+					{
+						check=(check+language[i].value)+"</br>";
+					}
+			//console.log("loop check", check, i);	
+				}
+				document.getElementById('checkboxmsg').innerHTML="";
+				return check;	
+			}
+	
+		}
+		
+		function valid()
+		{
+			return(document.write(
+									"<html>"+
+									"<center>"+
+									"<B>"+
+									"Registration Data:"+
+									"</B>"+
+									"</br>"+
+									"</br>"+
+									"<table border=1>"+
+									"<tr>"+
+									"<td>"+"Name:"+"</td>"+
+									"<td>"+name+"</td>"+
+									"</tr>"+
+									
+									"<tr>"+
+									"<td>"+"Address:"+"</td>"+
+									"<td>"+address+"</td>"+
+									"</tr>"+
+									
+									"<tr>"+
+									"<td>"+"Email:"+"</td>"+
+									"<td>"+email+"</td>"+
+									"</tr>"+
+									
+									"<tr>"+
+									"<td>"+"Birthdate:"+"</td>"+
+									"<td>"+birthdate+"</td>"+
+									"</tr>"+
+									
+									"<tr>"+
+									"<td>"+"ContactNo:"+"</td>"+
+									"<td>"+contactno+"</td>"+
+									"</tr>"+
+									
+									"<tr>"+
+									"<td>"+"language:"+"</td>"+
+									"<td>"+check+"</td>"+
+									"</tr>"+
+									
+									"<tr>"+
+									"<td>"+"Gender:"+"</td>"+
+									"<td>"+result+"</td>"+
+									"</tr>"+
+									
+									"<tr>"+
+									"<td>"+"Remarks:"+"</td>"+
+									"<td>"+textar+"</td>"+
+									"</tr>"+									
+									
+									"</center>"+
+									"</table>"+	
+									"</html>"))
+		}
+		
+</script>
 </form>
 </body>
 

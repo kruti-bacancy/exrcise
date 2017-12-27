@@ -102,13 +102,15 @@ function withparam()
 	}
 	document.write(day);*/
 	
-	try{
+	/*try{
 		 adddlert("gjgdfs");
 	}
 	catch(err)
 	{
 		document.getElementById("demo2").innerHTML=err.message;
-	}
+	}*/
+	
+	
 }
 
 

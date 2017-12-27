@@ -1,7 +1,7 @@
 function valid()
 {
 		
-		var result;
+		/*var result;
 		var check="";
 		
 		var name=document.forms["register"]["name"].value;
@@ -17,7 +17,7 @@ function valid()
 		var contactno=document.forms["register"]["contactno"].value;
 		var textar=document.forms["register"]["teaxtarea"].value;
 		  
-			if(validname(name))
+			if(printerrormsg(name))
 			{
 				if(validaddres(address))
 				{
@@ -29,8 +29,8 @@ function valid()
 				    if(validcontactno(contactno))
 				    {
 						 if(validcheckbox(language))
-						    {	
-						 		document.write(
+						    {	*/
+						 	return	document.write(
 									"<html>"+
 									"<center>"+
 									"<B>"+
@@ -65,8 +65,8 @@ function valid()
 									"</tr>"+
 									
 									"<tr>"+
-									"<td>"+"Remarks:"+"</td>"+
-									"<td>"+textar+"</td>"+
+									"<td>"+"language:"+"</td>"+
+									"<td>"+check+"</td>"+
 									"</tr>"+
 									
 									"<tr>"+
@@ -75,15 +75,15 @@ function valid()
 									"</tr>"+
 									
 									"<tr>"+
-									"<td>"+"language:"+"</td>"+
-									"<td>"+check+"</td>"+
-									"</tr>"+
+									"<td>"+"Remarks:"+"</td>"+
+									"<td>"+textar+"</td>"+
+									"</tr>"+									
 									
 									"</center>"+
 									"</table>"+	
 									"</html>");
 							
-					}
+					/*}
 						
 				    }
 				
@@ -94,18 +94,21 @@ function valid()
 			}
 		
 		
-		function validname(name)
+		function printerrormsg(name,elementId,msg)
 		{
 			if(name=="")
 			{
-				//alert("please fill the name");
+				document.getElementById(elementId).innerHTML=msg;
 				
-				document.getElementById('validname').innerHTML="please fill name";
 				return false;
-				//document.getElementById('validname').innerHTML="";
 			}
+			else
+			{
+				document.getElementById(ele).innerHTML="";
 			
 			return true;
+			}
+			
 		}
 
 		function validaddres(address)
@@ -192,7 +195,9 @@ function valid()
 			
 				return check;				
 			
-		}
+		}*/
+		
+		
 
  }
  
